@@ -11,10 +11,23 @@ datasource db {
 }
 
 
-model User {
+model Owners {
   id   String @id @default(uuid()) 
   email   String   @unique
   name    String?
+  password    String
 
-  @@map("users")
+  @@map("owners")
+}
+
+model Expenses {
+  id   String @id @default(uuid()) 
+  ownerId   String
+  name    String
+  amount    Int
+  date    DateTime
+  category    String
+  description    String?
+
+  @@map("expenses")
 }
